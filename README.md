@@ -23,7 +23,7 @@ Le script cibul_parse.php va utiliser l'api offerte pour les développeurs de Ci
 
 Le script fileSynchronise.php va se charger de synchroniser tous les fichiers contenus dans cache/JSON pour en faire un seul fichier se trouvant dans cache/ et se nommant allcontent.json.
 
-Enfin, le controller.php sera utilisés avec deux paramètre ("row_cont" et "offset") qui permettra de renvoyer à partir du fichier allcontent.json un nombre d'évènements (row_cont) à partir de l'élément (offset).
+Enfin, le controller.php sera utilisés avec deux paramètre ("row_count" et "offset") qui permettra de renvoyer à partir du fichier allcontent.json un nombre d'évènements (row_count) à partir de l'élément (offset).
 
 Si vous voulez rajouter d'autres scripts php, il vous suffit juste de se conformer à la syntaxe générale des fichiers et mettre un fichier .json dans cache/JSON et fileSynchonise se chargera du reste. 
 
