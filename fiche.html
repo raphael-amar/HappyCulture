@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="container wrapper description">
+
+	<div class="inner_content">
+	<div class="row">
+		<div class="span9">
+			<h1 class="title"></h1>
+			<hr>
+			<h2><span id="lieu"></span><span class="hue date"></span></h2>
+			<h1 id="subdescription"></h1>
+			<hr>
+			<button class="button orange glossy onlybutton" onclick="lastContent()"><i class="icon-arrow-left"></i> Retour aux spectacles</button>
+
+			  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 id="myModalLabel">Office de Tourisme</h3>
+            </div>
+            <div class="modal-body">
+           
+              <p><img src="img/ot-montpellier-now.jpg" height="200" width="200" class="pull-right" alt="">L'office de tourisme de la ville de Montpellier organise des visites guidées et contribue à la publication d'évènements culturels de la région.</p>
+              <p>Il participe activement au projet HappyCulture dans le sens au l'essentiel de son contenu provient de l'office de tourisme de Montpellier.</p>
+              <h5>http://ot-montpellier.fr</h5>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal">Fermer</button>
+            </div>
+          </div>
+			<button data-toggle="modal" href="#myModal" class="button orange glossy onlybutton" style="width: 162px; height: 39px; float: right;"> <img src="img/ot-website.jpg" style="margin-top: -23px"/></button>
+		</div>
+		<div class="span3">
+			<h4 class="title-divider span3">Notre<strong> Flyer</strong><span></span></h4>
+			<img class='imagethumb' src="" alt=""/>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<div ></div>
+	<div class="row">
+		<div class="span9">
+		<h4 class="title-divider span8">Notre<strong> Description</strong><span></span></h4>
+		<br/>
+		<div class="well">
+				<p class="freeText"><i class="icon-quote-left icon-4x pull-left black"></i>
+				</p>
+				</div>
+				<img src="img/shadow1.png" class="shadow" alt="" />
+		</div>
+				
+		<div class="span3">
+		    <h4 class="title-divider span4">Informations sur les<strong> Lieux</strong><span></span></h4>
+				
+			<a class="button orange glossy onlybutton" onclick="nextLocation()"><i class=" icon-circle-arrow-left"></i></a>
+			<a class="button orange glossy onlybutton" onclick="previousLocation()"><i class=" icon-circle-arrow-right"></i></a>
+
+			<div class="pad15"></div>
+			<div class="gmapcontainer">
+				<div id="map"/>
+			<!-- <button class="button orange glossy onlybutton zoomgmap" onclick="fullGoogleMap()">Zoomer carte</button> -->
+			<hr>
+			
+			<ul class="icons dates">
+				<li class="pricing"><i class="icon-shopping-cart hue"></i></li>
+			</ul>
+			<hr>
+		</div>
+	</div>
+	</div>
+</body>
+</html>
