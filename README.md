@@ -39,8 +39,8 @@ Le site internet est entièrement configurable. Le nom des catégories et le tri
 
 1) rajouter dans index.html dans la balise d'id "options" une ligne de ce type :
 
-<li><a href="#filter" data-option-value="macategorie" class="selected button orange glo\
-ssy">Ma catégorie</a></li>
+li a href="#filter" data-option-value="macategorie" class="selected button orange glo\
+ssy" Ma catégorie /a /li
 le data-option-value permettra de mettre en place les filtres dans le plugin isotope. 
 
 2) Définir lors de la génération des évènements de façon dynamique dans le fichier js/sorting.js ligne 337 la catégorie auquel appartient votre évènement. Si cela est une catégorie "macatégorie", il n'y aura qu'à mettre "macategorie" ( exemple : data-categorie="macategorie" dans un div )
