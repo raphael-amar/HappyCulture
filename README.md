@@ -45,7 +45,7 @@ le data-option-value permettra de mettre en place les filtres dans le plugin iso
 
 2) Définir lors de la génération des évènements de façon dynamique dans le fichier js/sorting.js ligne 337 la catégorie auquel appartient votre évènement. Si cela est une catégorie "macatégorie", il n'y aura qu'à mettre "macategorie" ( exemple : data-categorie="macategorie" dans un div )
 
-### Arrangement du modèle de donée 
+### Modèle de donée 
 
 Toutes les données qui proviennent du fichier allcontent.json ou d'autres fichiers que vous apportez dans l'application dans le but de rajouter du contenu sont modifiables en local. 
 
