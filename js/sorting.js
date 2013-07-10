@@ -34,7 +34,8 @@ var structureCibulEventObject = {
 	"description fr" : "description",
 	"tags fr" : "tags",
 	"title fr" : "title",
-	"image" : "picture"
+	"image" : "picture",
+	"link" : "link"
 };
 
 var structureCibulDateObject = {
@@ -132,6 +133,7 @@ function FormatedEvent() {
 	this.description = "Pas encore de description";
 	this.subdescription = "Pas encore de description secondaire";
 	this.tags;
+	this.link;
 	this.picture = "img/default.jpg";
 	this.smallpicture;
 	this.locations = new Array();
@@ -153,6 +155,7 @@ function getAjaxData(myUrl, myDataType, handleData) {
 		url: myUrl,
 		dataType : myDataType,
 		success: function(data) {
+			console.log(data);
 			if (!data) {
 				console.log('error on getAjaxData : data is empty');
 			}

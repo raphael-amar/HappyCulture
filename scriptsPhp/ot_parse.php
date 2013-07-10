@@ -9,7 +9,6 @@
 	file_put_contents($thread, "");
 
 	$i = 1;
-	$link;
 	$allEvents = array(
     "data"  => array());
 	for (; $i < 8; $i++)
@@ -48,16 +47,10 @@
 			if ($img)
 			{
 				$img = $img->getAttribute("src");
-				echo $img;
 				if ($img == 'http://www.ot-montpellier.fr/_objets/imgbk/libre/reservez-en-ligne-1273234552-26366.png')
-				{
 					$img = 'img/visite-guidee.jpg';
-					echo '<br/>';
-					echo $img;
-				}
-				echo '<br/>';
 			}
-			$event = new OtEvent($tag, $title, $img, $spacetimeinfo, $description, $freeText);
+			$event = new OtEvent($tag, $title, $img, $spacetimeinfo, $description, $freeText, $link);
 			if (strpos($title,'Gay') == false && strpos($title,'Visite guidée') == false) 
 				array_push($allEvents["data"], $event);
 		}

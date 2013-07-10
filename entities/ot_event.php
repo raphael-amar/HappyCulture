@@ -44,13 +44,15 @@ class OtEvent {
 	public $spacetimeinfo;
 	public $description;
 	public $freeText;
+	public $link;
 
-	public function __construct($tags, $title, $image, $spacetimeinfo, $description, $freeText)
+	public function __construct($tags, $title, $image, $spacetimeinfo, $description, $freeText, $link)
 	{
 		$this->uid = rand(1,100000);
 		$this->tags = new tag($tags);
 		$this->title = new title($title);
 		$this->image = $image;
+		$this->link = $link;
 		$this->spacetimeinfo = $spacetimeinfo;
 		$this->description = new description($description);
 		$this->freeText = new freeText($freeText);
