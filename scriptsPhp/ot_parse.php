@@ -10,13 +10,9 @@
 
 	$i = 1;
 	$link;
-
 	$allEvents = array(
     "data"  => array());
-   
-    //array_push($a["data"], $event);
-   	//echo json_encode($a);
-	for (; $i < 6; $i++)
+	for (; $i < 8; $i++)
 	{
 		$chain = 'http://www.ot-montpellier.fr/agenda-montpellier/periode_' . $i . '.html#contenu';
 		$html = file_get_html($chain);
@@ -48,12 +44,18 @@
 					$freeText .= '</p>';
 				}
 			}
-			//echo $freeText;
-			//$freeText = implode("", $middle->find('p'));
 			$img =  $htmlInner->find('.blok_image img', 0);
 			if ($img)
 			{
 				$img = $img->getAttribute("src");
+				echo $img;
+				if ($img == 'http://www.ot-montpellier.fr/_objets/imgbk/libre/reservez-en-ligne-1273234552-26366.png')
+				{
+					$img = 'img/visite-guidee.jpg';
+					echo '<br/>';
+					echo $img;
+				}
+				echo '<br/>';
 			}
 			$event = new OtEvent($tag, $title, $img, $spacetimeinfo, $description, $freeText);
 			if (strpos($title,'Gay') == false && strpos($title,'Visite guidée') == false) 

@@ -156,7 +156,6 @@ function getAjaxData(myUrl, myDataType, handleData) {
 			if (!data) {
 				console.log('error on getAjaxData : data is empty');
 			}
-			/*console.log(data);*/
 			handleData(data);
 		},
 		error: function(e, xhr) {
@@ -319,51 +318,6 @@ function generateDescription(id) {
 		app.html.description = ajaxData;
 		changePage(ajaxData, extractItemFromId(id), app.html.events);
 	});
-}
-
-/*****************************************
-			  HTML GENERATORS
-*****************************************/
-
-function generateHTMLEvents(object) {
-	if (object == null || object === "undefined") 
-		{console.log("object on generateHTMLEvents is null or undefined"); return false;}
-	var category = generateCategory(object);
-	var background = generateColor(object);
-	var content = generateContent(object);
-	var title = generateTitle(object);
-	var img;
-	(object.picture != null && object.picture != "undefined") ? img = object.picture : img = "img/default.jpg";
-	return "<div class=\"span3 element " + category + "\" data-category=\"" + category + "\" onclick=\"generateDescription(" + object.id + ")\">"
-		+            "<div class=\"hover_img\">"
-		+                "<a data-toggle=\"modal\" class=\"pinchin\" href=\"#myModal\"><img src=\"" + img + "\"style=\"width:370px;height:278px;\"alt=\"" + title + "\" /></a>"
-		+                "<span class=\"portfolio_link\"><a data-toggle=\"modal\" href=\"#myModal\">Voir la fiche</a></span>"
-		+            "</div>"
-		+			"<div class=\"item_description\" style=\"color: #3D3D3D; background-color: " + background + "\">"
-		+ 				"<a><span>" + title + "</span></a><br/>"
-		+				content + '<br/>'
-		+            "</div>"
-		+		"</div>";
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------
-
-function generateHTMLDescription(item)
-{
-	if (typeof(item) == "undefined") {console.log("item undefined on description");}
-	item.title ? $('.title').html(item.title) : console.log("generateHTMLDescription : title not set");
-	item.description ? $('#subdescription').html(item.description) : console.log("generateHTMLDescription : description not set");
-	item.subdescription ? $('.freeText').append(item.subdescription.replace('\\n', '<br/>')) : console.log("generateHTMLDescription : subdesc not set");
-	item.picture ? $('.imagethumb').attr('src', item.picture).css('width', "270px").css('height', "178px") : console.log("generateHTMLDescription : picture not set");
-	$('#map').css('max-width', '100%').css('height', '190px').css('margin-top', '10px').css('width', '270px');
-	var longitude = 3.8767160;
-	var latitude = 43.6107690;
-		for (locationCibul in item.locations) {
-			longitude = item.locations[locationCibul].longitude;
-			latitude = item.locations[locationCibul].latitude;
-		}
-	//console.log(item);
-	normalGoogleMap(latitude, longitude);
 }
 
 function reduceString(str, length)
@@ -551,34 +505,3 @@ function doIsotope()
 		});
 	$("#options .option-set li:eq(0) a").trigger("click");
 }
-
-//$('#lieu').html('A : ' + extractLieu(item.spacetimeinfo)[0] + ", ");
-	//$('.date').html(item.spacetimeinfo);
-	//$('.date').html(extractDateOnString(extractLieu(item.spacetimeinfo)));	
-	//$('.spacetimeinfo').append(item.spacetimeinfo);
-	//$('.qrcode').attr('src', 'img/qrcodehc.png').css('width', "90px").css('height', "90px").css('margin-top', '20px').css('float', 'right');
-	//$('#map').css('max-width', '100%').css('height', '190px').css('margin-top', '10px').css('width', '270px');
-	
-	/*if (item.locations)
-		$locations = item.locations;
-	for (var field in $locations)
-	{
-		var price;
-
-		if (!$locations[field].pricingInfo)
-			price = "prix non renseigné";
-		else if ($locations[field].pricingInfo.en)
-			price = $locations[field].pricingInfo.en;
-		else
-			price = $locations[field].pricingInfo.fr;
-		$('.pricing').append('Prix : ' + price);
-		var lat = $locations[field].latitude;
-		var longi = $locations[field].longitude;
-		
-		normalGoogleMap(lat, longi);
-		for (var j = 0; j < $locations[field].dates.length; j++)
-		{
-			$('.dates').append('<li><i class="icon-time hue"></i>' + $locations[field].dates[j].date + '</li>');
-		}
-		break;
-	}*/
