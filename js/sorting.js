@@ -49,39 +49,16 @@ var structureCibulLocationObject = {
 	"latitude" 	: "latitude"
 };
 
+var structureCibulProgramsObject = {
+	"title"		: "title",
+	"image"		: "picture",
+	"description" : "description"
+}
+
 var relations = {
 	"locations": "FormatedLocations",
-	"dates" : "FormatedDates"
-};
-
-var date1 = {
-	"timeStart" : "2013:10:05",
-	"timeEnd" 	: "2013:11:06"
-};
-
-var location1 = {
-	"placename" : "69 rue sully prudhomme",
-	"longitude" : 3.999,
-	"latitude"  : 45.456,
-	"dates" : new Array(date1, date1)
-};
-
-var location2 = {
-	"placename" : "71 rue mistral",
-	"longitude" : 5.999,
-	"latitude"  : 41.456,
-	"dates" : new Array(date1, date1)
-};
-
-var test = {
-	"uid" : 4561,
-	"freeText" : {
-		"fr" : "c'est dla balle"
-	},
-	"description" : {
-		"fr" : "on teste la description"
-	},
-	"locations" : new Array(location1, location2)
+	"dates" : "FormatedDates",
+	"programs": "FormatedPrograms"
 };
 
 /*****************************************
@@ -111,6 +88,13 @@ var test = {
 };
 */
 
+function FormatedPrograms() {
+	this.description;
+	this.image;
+	this.title;
+	this.structure = structureCibulProgramsObject;
+}
+
 function FormatedLocations() {
 	this.placename;
 	this.longitude;
@@ -137,6 +121,7 @@ function FormatedEvent() {
 	this.picture = "img/default.jpg";
 	this.smallpicture;
 	this.locations = new Array();
+	this.programs = new Array();
 	this.relations = relations;
 	this.structure = structureCibulEventObject;
 	this.isSet = function (field) {
@@ -155,7 +140,6 @@ function getAjaxData(myUrl, myDataType, handleData) {
 		url: myUrl,
 		dataType : myDataType,
 		success: function(data) {
-			console.log(data);
 			if (!data) {
 				console.log('error on getAjaxData : data is empty');
 			}
@@ -173,11 +157,8 @@ function recursiveAssembly(chunk, currentObject, saveArrayName, concatField, isA
 	{
 		var nonFormatedField;
 		concatField != null ? nonFormatedField = concatField + " " + field : nonFormatedField = field;
-		if (chunk[field] instanceof Array)
-		{
-			if (currentObject[field])
-				currentObject[field] = recursiveAssembly(chunk[field], currentObject[field], field, nonFormatedField, true, currentObject.relations);
-		}
+		if (chunk[field] instanceof Array && currentObject[field])
+			currentObject[field] = recursiveAssembly(chunk[field], currentObject[field], field, nonFormatedField, true, currentObject.relations);
 		else if (chunk[field] instanceof Object)
 		{
 			if (!isArray)
@@ -256,6 +237,7 @@ var makeEvent = function (url) {
 			for (object in ajaxData.data)
 			{
 				var formatedObject = formatAjaxData(ajaxData.data[object], new FormatedEvent());
+				/*console.log(formatedObject);*/
 				htmlEvents += generateHTMLEvents(formatedObject);
 				formatedObjects.push(formatedObject);
 			}
@@ -432,8 +414,6 @@ function infiniteScroll()
 		{
 			if (app.html.description != null)
 				return;
-			//if ($mainPage == false || $filterAllMode == false)
-				//return false;
 			currentTime = new Date();
 			if ((currentTime.getTime()- app.data.date.getTime()) > 1000) {app.data.date = new Date();}
 			else

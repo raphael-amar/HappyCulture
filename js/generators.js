@@ -32,26 +32,20 @@ function generateHTMLDescription(item)
 	item.description ? $('#subdescription').html(item.description) : console.log("generateHTMLDescription : description not set");
 	item.subdescription ? $('.freeText').append(item.subdescription.replace('\\n', '<br/>')) : console.log("generateHTMLDescription : subdesc not set");
 	item.picture ? $('.imagethumb').attr('src', item.picture).css('width', "270px").css('height', "178px") : console.log("generateHTMLDescription : picture not set");
-	console.log(item.link);
-	new QRCode(document.getElementById("qrcode"), {
-    text: item.link,
-    width: 128,
-    height: 128,
-    colorDark : "#000000",
-    colorLight : "#ffffff",
-    correctLevel : QRCode.CorrectLevel.H
-	});
-	/*	var qrcode = new QRCode(document.getElementById("qrcode"), 
+	if (item.programs) {
+		for (programs in item.programs) {
+			item.programs[programs].title ? $("#myModalLabel").html(item.programs[programs].title) : console.log("No title set on event's program");
+			item.programs[programs].description ? $("#contentmodal").html(item.programs[programs].description) : console.log("No description set on event's program");
+			item.programs[programs].picture ? $("#modal").attr("src", item.programs[programs].picture) : console.log("No picture on event's program");
+		}
+	}
+	var qrcode = new QRCode(document.getElementById("qrcode"), 
 		{
-			text: "http://prout.com",
-			width: 128,
-			height: 128,
-			colorDark: "#000000",
-			colorLight: "#ffffff",
-			correctLevel: QRCode.CorrectLevel.H0
+			text: item.link,
+			width: 210,
+			height: 210,
+			correctLevel: QRCode.CorrectLevel.L
 		});
-*/
-
 	$('#map').css('max-width', '100%').css('height', '190px').css('margin-top', '10px').css('width', '270px');
 	var longitude = 3.8767160;
 	var latitude = 43.6107690;

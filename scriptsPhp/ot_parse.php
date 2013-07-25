@@ -2,6 +2,7 @@
 	require_once("simple_html_dom.php");
 	require_once("../entities/ot_event.php");
 	set_time_limit(0);
+	ini_set("memory_limit","128M");
 	define('CACHE', dirname(__FILE__) . "/../cache/JSON/");
 	define('THREAD', dirname(__FILE__) . "/../cache/THREAD/");
 	$file = CACHE . 'otcache.json';
@@ -11,7 +12,7 @@
 	$i = 1;
 	$allEvents = array(
     "data"  => array());
-	for (; $i < 8; $i++)
+	for (; $i < 9; $i++)
 	{
 		$chain = 'http://www.ot-montpellier.fr/agenda-montpellier/periode_' . $i . '.html#contenu';
 		$html = file_get_html($chain);
